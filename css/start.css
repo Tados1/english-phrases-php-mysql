@@ -1,0 +1,50 @@
+body {
+    background-color: #131F24;
+}
+
+.start-button {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    font-size: 80px;
+    color: #fff;
+    background-color: #37464F;
+    border: none;
+    border-radius: 25px;
+    padding: 20px 150px;
+    font-weight: 1000;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+
+.start-button:hover {
+    background-color: #4AC0F8;
+    color: #131F24;
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1100px) {
+    .start-button {
+        font-size: 60px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .start-button {
+        font-size: 45px;
+        padding: 20px 100px;
+        font-weight: 800;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+.start-button {
+    font-size: 23px;
+    padding: 20px 60px;
+    letter-spacing: 2px;
+}
+}
+  
+  

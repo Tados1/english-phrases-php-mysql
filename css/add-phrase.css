@@ -1,0 +1,98 @@
+body {
+    background-color: #131F24;
+}
+
+.add-phrase {
+    height: 80vh;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.add-phrase h1 {
+    font-size: 62px;
+    letter-spacing: 5px;
+    color: white;
+}
+
+.add-phrase input {
+    font-size: 30px;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border: 3px solid #37464F;
+    border-bottom: 7px solid #37464F;
+    border-radius: 20px;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 10px 0px;
+    text-align: center;
+    transition: all linear 0.2s;
+    font-weight: 800;
+}
+
+.add-phrase input:focus {
+    background-color: #202F36;
+    border: 3px solid #3F85A7;
+    border-bottom: 6px solid #3F85A7;
+}
+
+.add-phrase input[type='text']::placeholder {
+    color: rgb(219, 219, 219);
+}
+
+.add-phrase button {
+    width: 100%;
+    border: none;
+    border-bottom: 5px solid #79B933;
+    border-radius: 20px;
+    padding: 10px 40px;
+    background-color: #93D333;
+    color: #131F24;
+    font-size: 30px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+
+.add-phrase button:hover, 
+.add-phrase button:active {
+    background-color: rgba(144, 236, 46, 0.624);
+    border-bottom: 5px solid rgba(62, 110, 10, 0.624);
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 800px) {
+    .add-phrase {
+        width: 300px;
+    }
+    
+    .add-phrase h1 {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .add-phrase {
+        width: 250px;
+    }
+    
+    .add-phrase h1 {
+        font-size: 19px;
+        margin-bottom: 40px;
+    }
+
+    .add-phrase input {
+        font-size: 20px;
+    }    
+
+    .add-phrase button {
+        font-size: 20px;
+    }
+}
+
+

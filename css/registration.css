@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    font-family: "Nunito", sans-serif;
+    font-weight: 800;
+}
+
+body {
+    background-color: #131F24;
+}
+
+.sign-in {
+    text-align: right;
+    margin: 20px 40px;
+}
+
+.sign-in a {
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    transition: all linear .2s;
+}
+
+.sign-in a:hover {
+    color: #93D333;
+}
+
+.registration {
+    height: 80vh;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.registration h1 {
+    font-size: 58px;
+    letter-spacing: 5px;
+    color: white;
+}
+
+.registration input {
+    font-size: 30px;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border: 3px solid #37464F;
+    border-bottom: 7px solid #37464F;
+    border-radius: 20px;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 10px 0px;
+    text-align: center;
+    transition: all linear 0.2s;
+}
+
+.registration input:focus {
+    background-color: #202F36;
+    border: 3px solid #3F85A7;
+    border-bottom: 6px solid #3F85A7;
+}
+
+.registration button {
+    width: 100%;
+    border: none;
+    border-bottom: 5px solid #79B933;
+    border-radius: 20px;
+    padding: 10px 40px;
+    background-color: #93D333;
+    color: #131F24;
+    font-size: 30px;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+
+.registration button:hover, 
+.registration button:active {
+    background-color: rgba(144, 236, 46, 0.624);
+    border-bottom: 5px solid rgba(62, 110, 10, 0.624);
+}
+
+.log-in {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.log-in p {
+    display: inline;
+    color: #778996;
+}
+
+.log-in a {
+    text-decoration: none;
+    color: #79B933;
+    transition: all linear .2s;
+}
+
+.log-in a:hover {
+    color: #4f7a20;
+}
+
+.error {
+    color: #ff4b4b;
+    font-size: 25px;
+}
+
+.alert {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 800px) {
+    .registration {
+        width: 300px;
+    }
+    
+    .registration h1 {
+        font-size: 22px;
+    }
+}
+
+
+@media only screen and (max-width: 650px) {
+    .registration {
+        width: 250px;
+    }
+    
+    .registration h1 {
+        font-size: 19px;
+        margin-bottom: 40px;
+    }
+
+    .registration input {
+        font-size: 20px;
+    }    
+
+    .registration button {
+        font-size: 20px;
+    }
+}
+
+
+

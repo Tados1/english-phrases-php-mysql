@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;   
+    background-color: #131F24;
+    border-bottom: 2px solid #1e3038;
+    height: 10vh;
+}
+
+.navbar h1 {
+    color: #fff;
+    text-align: center;
+    letter-spacing: 5px;
+    font-weight: 1000;
+    font-size: 40px;
+}
+
+.navbar nav {
+    position: absolute;
+    right: 0%;
+}
+
+.navbar nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar nav ul li {
+    list-style: none;
+}
+
+.navbar nav ul li a {
+    text-decoration: none;
+    color: #8b8b8b;
+    font-size: 20px;
+    font-weight: 800;
+    margin-right: 20px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.4s, color 0.4s;
+}
+
+.navbar nav ul li a:hover {
+    color: #fff;
+}
+
+.navbar nav ul li .logout:hover {
+    color: #ff4b4b;
+}
+
+.burger {
+    display: none;
+    position: absolute;
+    right: 2%;
+    top: 40%;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: #eee;
+    margin-bottom: 5px;
+    transition: all ease-in .3s;
+}
+
+.burger.open span:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+}
+
+.burger.open span:nth-child(2) {
+    width: 0;
+    opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px);
+}
+
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1600px) {
+    .navbar {
+        background-color: #101a1f;
+    }
+
+    .navbar nav {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .navbar nav.open {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity .6s, visibility .6s; 
+    }
+
+    .navbar nav {
+        background-color: #101a1f;
+        width: 100%;
+        top: 100%;
+        border-bottom: 2px solid #1e3038;
+    }
+
+    .navbar nav ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar nav ul li {
+        margin: 15px;
+    }
+
+    .burger {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .navbar h1 {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .navbar {
+        height: 100px;
+    }
+
+    .navbar h1 {
+        letter-spacing: 0;
+        font-weight: 800;
+    }
+    
+}
+
+@media only screen and (max-width: 620px) {
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .navbar h1 {
+        font-size: 20px;
+        margin-left: 5%;
+    }
+}
+

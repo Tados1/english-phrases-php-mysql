@@ -1,0 +1,100 @@
+body {
+    background-color: #131F24;
+}
+
+.edit-phrase {
+    height: 80vh;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.edit-phrase h1 {
+    font-size: 58px;
+    letter-spacing: 5px;
+    color: white;
+}
+
+.edit-phrase input {
+    font-size: 30px;
+    font-weight: 800;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border: 3px solid #37464F;
+    border-bottom: 7px solid #37464F;
+    border-radius: 20px;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 10px 0px;
+    text-align: center;
+    transition: all linear 0.2s;
+}
+
+.edit-phrase input:focus {
+    background-color: #202F36;
+    border: 3px solid #3F85A7;
+    border-bottom: 6px solid #3F85A7;
+}
+
+.edit-phrase input[type='text']::placeholder {
+    color: rgb(219, 219, 219);
+}
+
+.edit-phrase button {
+    width: 100%;
+    border: none;
+    border-bottom: 5px solid #79B933;
+    border-radius: 20px;
+    padding: 10px 40px;
+    background-color: #93D333;
+    color: #131F24;
+    font-size: 30px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+
+.edit-phrase button:hover, 
+.edit-phrase button:active {
+    background-color: rgba(144, 236, 46, 0.624);
+    border-bottom: 5px solid rgba(62, 110, 10, 0.624);
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 800px) {
+    .edit-phrase {
+        width: 300px;
+    }
+    
+    .edit-phrase h1 {
+        font-size: 22px;
+    }
+}
+
+
+@media only screen and (max-width: 650px) {
+    .edit-phrase {
+        width: 250px;
+    }
+    
+    .edit-phrase h1 {
+        font-size: 19px;
+        margin-bottom: 40px;
+    }
+
+    .edit-phrase input {
+        font-size: 20px;
+    }    
+
+    .edit-phrase button {
+        font-size: 20px;
+    }
+}
+
+
+
