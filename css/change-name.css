@@ -1,64 +1,28 @@
-* {
-    font-weight: 800;
-}
-
 body {
     background-color: #131F24;
+    color: white;
 }
 
-.content {
+.change-name {
     height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;  
-}
-
-.guess-word {
+    width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 600px;
+    margin: 0 auto;
 }
 
-.counter {
-    color: #1cb0f6;
-}
-
-.additional-class {
+.change-name h1 {
+    font-size: 60px;
+    color: white;
+    font-weight: 800;
     margin-bottom: 20px;
 }
 
-.additional-class h1 {
-    font-size: 40px;
-}
-
-.phrase h1 {
-    color: rgb(255, 255, 255);
-}
-
-.right-answer h1 {
-    color: #93D333;
-}
-
-.wrong-answer h1 {
-    color: #ff4b4b;
-}
-
-.wrong-answer h3 {
-    color: white;
+.change-name input {
     font-size: 30px;
-    text-align: center;
-}
-
-.guess-word form {
     width: 100%;
-}
-
-.guess-word form input {
-    font-size: 30px;
-    width: 99%;
     background-color: transparent;
     color: white;
     border: 3px solid #37464F;
@@ -69,15 +33,20 @@ body {
     padding: 10px 0px;
     text-align: center;
     transition: all linear 0.2s;
+    font-weight: 800;
 }
 
-.guess-word input:focus {
+.change-name input:focus {
     background-color: #202F36;
     border: 3px solid #3F85A7;
     border-bottom: 6px solid #3F85A7;
 }
 
-.guess-word form button {
+.change-name input[type='text']::placeholder {
+    color: rgb(219, 219, 219);
+}
+
+.change-name button {
     width: 100%;
     border: none;
     border-bottom: 5px solid #79B933;
@@ -86,47 +55,70 @@ body {
     background-color: #93D333;
     color: #131F24;
     font-size: 30px;
-    font-weight: 1000;
+    font-weight: 800;
     cursor: pointer;
     transition: all linear .2s;
 }
 
-.guess-word form button:hover, 
-.guess-word form button:active {
+.change-name button:hover, 
+.change-name button:active {
     background-color: rgba(144, 236, 46, 0.624);
     border-bottom: 5px solid rgba(62, 110, 10, 0.624);
 }
 
-.no-phrases p {
+.alert p {
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
     color: #ff4b4b;
-    font-size: 45px;
+    margin-top: 20px;
 }
+
+.updated p {
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    color: #79B933;
+    margin-top: 20px;
+}
+
 
 /* ---------------------- CSS media queries ------------------- */
 
-@media only screen and (max-width: 700px) {
-    .guess-word {
+@media only screen and (max-width: 800px) {
+    .change-name {
         width: 300px;
     }
-    .additional-class h1 {
-        font-size: 30px;
+    
+    .change-name h1 {
+        font-size: 40px;
     }
 
-    .right-answer h1 {
-        font-size: 30px;
-    }
+    .change-name input {
+        font-size: 20px;
+    }  
 
-    .wrong-answer h1 {
+    .change-name button {
         font-size: 25px;
     }
 
-    .wrong-answer h3 {
+    .updated p {
         font-size: 25px;
     }
 
-    .no-phrases p {
-        color: #ff4b4b;
+    .alert p {
         font-size: 25px;
     }
 }
+
+@media only screen and (max-width: 650px) {
+    .change-name {
+        width: 250px;
+    }
+    
+    .change-name h1 {
+        font-size: 35px;
+    }
+}
+
 

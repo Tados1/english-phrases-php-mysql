@@ -1,0 +1,120 @@
+body {
+    background-color: #131F24;
+}
+
+.friends-request {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border: 3px solid #37464F;
+    border-bottom: 6px solid #37464F;
+    border-radius: 20px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.friends-request p {
+    width: 80%;
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.user-name {
+    color: #43c000;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+}
+
+.btns button {
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 0px;
+    color: #131F24;
+    font-size: 30px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+
+.btns button[name="accept"] {
+    background-color: #93D333;
+    border-bottom: 5px solid #79B933;
+}
+
+.btns button[name="accept"]:hover, 
+.btns button[name="accept"]:active {
+    background-color: rgba(144, 236, 46, 0.624);
+    border-bottom: 5px solid rgba(62, 110, 10, 0.624);
+}
+
+.btns button[name="decline"] {
+    background-color: #ff4b4b;
+    border-bottom: 5px solid #db3737;
+}
+
+.btns button[name="decline"]:hover, 
+.btns button[name="decline"]:active {
+    background-color: #ca2020;
+    border-bottom: 5px solid #800202;
+}
+
+/******************************* No Friends Requests ****************************************/
+
+.no-friends-requests {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    border: 3px solid #37464F;
+    border-bottom: 6px solid #37464F;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.no-friends-requests p {
+    color: white;
+    font-size: 35px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.no-friends-requests a {
+    color: #ff4b4b;
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 800px) {
+    .friends-request {
+        width: 400px;
+    }
+
+    .friends-request p {
+        font-size: 20px;
+    }
+
+    .btns button {
+        font-size: 20px;
+    }
+
+    .no-friends-requests {
+        width: 400px;
+    }
+    
+    .no-friends-requests p {
+        font-size: 25px;
+    }
+}

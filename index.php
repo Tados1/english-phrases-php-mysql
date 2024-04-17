@@ -9,8 +9,8 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $connection = Database::databaseConnection();
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+    $email = htmlspecialchars($_POST["email"]);
+    $password = htmlspecialchars($_POST["password"]);
 
     $login_result = Users::authentication($connection, $email, $password);
     
@@ -25,11 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             Url::redirectUrl("/english-phrases-php/pages/start.php");
         } else {
-            $error = "Incorrect login name or password";
+            $_SESSION["status"] = "Incorrect login name or password";
         }
     } else {
-        $_SESSION['status'] = $login_result;
-        header("Location: index.php");
+        $_SESSION["status"] = $login_result;
+        Url::redirectUrl("/english-phrases-php/index.php");
         exit();
     }
 }
@@ -41,23 +41,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/sign-in.css">
+    <link rel="stylesheet" href="css/log-in.css">
     <title>Log In</title>
 </head>
 <body>
-
-    <?php
-        if(isset($_SESSION['status'])) 
-        {
-            ?>
-            <div class="alert alert-success">
-                <h1> <?= $_SESSION['status']; ?></h1>
-            </div>
-            <?php
-            unset($_SESSION['status']);
-        }
-    ?>
-    <form method="POST" class="sign-in">
+    <form method="POST" class="log-in">
         <h1>Log In</h1>
         <input type="email" placeholder="Email" name="email" required>
         <input type="password" placeholder="Password" name="password" required>
@@ -69,13 +57,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <div class="sign-up">
             <p>Don't have an account?</p>
-            <a href="registration.php">Sign Up</a>
+            <a href="sign-up.php">Sign Up</a>
         </div>
 
-        <?php if(isset($error)): ?>
-            <div class="error">
-                <p><?= $error; ?></p>
+        <?php if(isset($_SESSION["status"])) : ?>
+            <div class="alert">
+                <p><?= $_SESSION["status"]; ?></p>
             </div>
+            <?php unset($_SESSION["status"]); ?>
         <?php endif; ?>
     </form>
 </body>

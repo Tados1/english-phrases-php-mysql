@@ -56,6 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php require "../assets/header.php"; ?>
         
     <form method="POST" class="edit-phrase">
+        <h1>EDIT PHRASE</h1>
+
         <input  type="text" 
                 name="slovak" 
                 placeholder="Slovak" 

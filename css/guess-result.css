@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    font-family: "Nunito", sans-serif;
+    font-weight: 800;
+}
+
+
+body {
+    background-color: #131F24;
+}
+
+.result {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 3px solid #37464F;
+    border-bottom: 6px solid #37464F;
+    border-radius: 20px;
+}
+
+.result p {
+    color: rgb(202, 202, 202);
+    font-size: 50px;
+    padding: 30px;
+    text-align: center;
+}
+
+.right {
+    color: #79B933;
+}
+
+.wrong {
+    color: #ff4b4b;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.btns a {
+    text-decoration: none;
+    font-size: 40px;
+    color: #131F24;
+    background-color: #ff4b4b;
+    padding: 5px 20px;
+    border-radius: 20px;
+    transition: all linear 0.2s;
+}
+
+.btns a:hover {
+    background-color: #db3d3d;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background-color: #3892be;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 5px 20px;
+    transition: all linear .2s;
+    margin-right: 20px;
+}
+  
+.lable {
+    font-size: 40px;
+    color: #131F24;
+}
+  
+.button:hover {
+    background-color: #166e9b;
+}
+
+.svg-icon {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1300px) {
+    .result p {
+        font-size: 35px;
+        padding: 10px;
+    }
+    
+    .btns a {
+        font-size: 30px;
+    }
+
+    .lable {
+        font-size: 30px;
+    }  
+}
+
+@media only screen and (max-width: 1000px) {
+    .result {
+        width: 80vw;
+    }
+
+    .result p {
+        font-size: 25px;
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .result p {
+        font-size: 20px;
+        width: 80%;
+    }
+
+    .btns a {
+        font-size: 25px;
+    }
+    
+    .lable {
+        font-size: 25px;
+    }  
+}
+
+
+@media only screen and (max-width: 600px) {
+    .btns a {
+        font-size: 18px;
+    }
+    
+    .lable {
+        font-size: 18px;
+    }  
+}

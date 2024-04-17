@@ -60,9 +60,27 @@ class Phrases {
         }
     }
 
+    public static function getRandomFriendsPhrase($connection, $id_user, $friend_id) {
+        $sql = "SELECT * FROM phrases WHERE id_user = :id_user OR id_user = :friend_id ORDER BY RAND() LIMIT 1";
+        
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(":id_user", $id_user, PDO::PARAM_INT);
+        $stmt->bindValue(":friend_id", $friend_id, PDO::PARAM_INT);
+
+        try {
+            if($stmt->execute()) {
+                return $stmt->fetch();
+            } else {
+                throw new Exception("Retrieving data about one random phrase failed");
+            }
+        } catch (Exception $e) {
+            error_log("Error with function getRandomPhrase, failed to get data\n", 3, "../errors/error.log");
+            echo "Error Type: " . $e->getMessage();
+        }
+    }
+
 
     public static function create($connection, $slovak, $english, $id_user) {
-
         $sql = "INSERT INTO phrases (slovak, english, id_user) 
         VALUES (:slovak, :english, :id_user)";
 
@@ -85,7 +103,6 @@ class Phrases {
     }
 
     public static function edit($connection, $slovak, $english, $id) {
-
         $sql = "UPDATE phrases
                     SET slovak = :slovak,
                         english = :english
@@ -126,6 +143,27 @@ class Phrases {
             }
         } catch (Exception $e) {
             error_log("Error with function delete\n", 3, "../errors/error.log");
+            echo "Error Type: " . $e->getMessage();
+        }
+    }
+
+    public static function deleteAllPhrases($connection, $id){
+        $sql = "DELETE
+                FROM phrases
+                WHERE id_user = :id";
+        
+        $stmt = $connection->prepare($sql);
+
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                throw new Exception("Deleting all phrases failed");
+            }
+        } catch (Exception $e) {
+            error_log("Error with function deleteAllPhrases\n", 3, "../errors/error.log");
             echo "Error Type: " . $e->getMessage();
         }
     }

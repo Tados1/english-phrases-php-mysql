@@ -10,7 +10,7 @@
 .navbar {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     z-index: 10;   
     background-color: #131F24;
@@ -18,12 +18,21 @@
     height: 10vh;
 }
 
-.navbar h1 {
-    color: #fff;
-    text-align: center;
-    letter-spacing: 5px;
-    font-weight: 1000;
+.heading-icon {
+    color: #e5e5e5;
+    margin-left: 100px;
+}
+
+.heading-icon i {
     font-size: 40px;
+    margin-right: 20px;
+}
+
+.heading-icon h1 {
+    font-size: 40px;
+    font-weight: 1000;
+    letter-spacing: 3px;
+    display: inline;
 }
 
 .navbar nav {
@@ -133,31 +142,46 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    .navbar h1 {
+    .heading-icon i {
+        font-size: 30px;
+    }
+
+    .heading-icon h1 {
         font-size: 30px;
     }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 800px) {
     .navbar {
-        height: 100px;
+        height: 80px;
+    }
+    
+    .heading-icon {
+        margin-left: 50px;
     }
 
-    .navbar h1 {
+    .heading-icon h1 {
         letter-spacing: 0;
         font-weight: 800;
     }
-    
+
+    .burger {
+        right: 5%;
+    }
 }
 
 @media only screen and (max-width: 620px) {
-    .navbar {
-        justify-content: space-between;
+    .heading-icon {
+        margin-left: 30px;
     }
 
-    .navbar h1 {
-        font-size: 20px;
-        margin-left: 5%;
+    .heading-icon i {
+        font-size: 25px;
+        margin-right: 10px;
+    }
+
+    .heading-icon h1 {
+        font-size: 25px;
     }
 }
 

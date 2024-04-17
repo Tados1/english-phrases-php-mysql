@@ -23,19 +23,19 @@ function send_reset_password($email, $token) {
         $mail->CharSet = "UTF-8";
         $mail->Encoding = "base64";
 
-        $mail->Username = "tadeas.strba@gmail.com";
+        $mail->Username = "englishphrasesphp@gmail.com";
         //password generation via myaccount.google.com/apppasswords
-        $mail->Password = "zzbqrhhjgvscojod";
+        $mail->Password = "oerptedrpiyubaox";
         $mail->SMTPSecure = "ssl";
         $mail->Port = 465;
     
-        $mail->setFrom("tadeas.strba@gmail.com");
+        $mail->setFrom("englishphrasesphp@gmail.com");
         $mail->addAddress($email);
         $mail->Subject = 'Here is your password reset link';
 
         $email_template = "
             <p>You are receiving this email because we received a password reset request for your account.</p>
-            <a href='http://localhost/english-phrases-php/new-password.php?token=$token'> Click me </a>
+            <a href='http://localhost/english-phrases-php/new-password.php?token=$token'> Click here</a>
         ";
 
         $mail->Body = $email_template;
@@ -49,19 +49,18 @@ function send_reset_password($email, $token) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $connection = Database::databaseConnection();
-    $email = $_POST["email"];
+    $email = htmlspecialchars($_POST["email"]);
 
-    if(Users::checkEmailExists($connection, $email)) {
+    if(Users::checkUserDataExists($connection, $email, "email")) {
         $id = Users::getUserInfo($connection, $email, "id_user");
         $token = md5(rand());
        
         if(Users::updateToken($connection, $token, $email)) {        
             send_reset_password($email, $token);
-            $_SESSION["status"] = "Reset password link has been send";
+            $_SESSION["status"] = "Reset password link has been sent.";
         } else {
             $_SESSION["status"] = "Something went wrong.";
         }
-
     } else {
         $_SESSION["status"] = "Email address is not registered";
     }
@@ -78,14 +77,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Password Reset</title>
 </head>
 <body>
-    <form method="POST" class="sign-in">
+    <form method="POST" class="password-reset">
         <h1>Password Reset</h1>
         <input type="email" placeholder="Enter email address" name="email" required>
         <button>Send</button>
-        
+
+        <div class="log-in">
+            <p>Back to</p>
+            <a href="index.php">Login</a>
+        </div>
 
         <?php if(isset($_SESSION["status"])): ?>
-            <div class="message">
+            <div class="alert">
                 <p><?= $_SESSION["status"]; ?></p>
             </div>
         <?php endif; ?>

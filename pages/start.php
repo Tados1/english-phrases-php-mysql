@@ -9,9 +9,11 @@ if (!Auth::isLoggedIn() ) {
     die("Unauthorized access");
 }
 
-$id =  $_SESSION["logged_in_user_id"];
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $_SESSION["counter_to_10"] = 0;
+    $_SESSION["correct_to_10"] = 0;
+    $_SESSION["incorrect_to_10"] = 0;
+
     Url::redirectUrl("/english-phrases-php/pages/guess-phrase.php");
 }
 
@@ -29,14 +31,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php require "../assets/header.php"; ?>
 
     <form id="redirectForm" method="POST">
-        <button class='start-button' onclick="return delayRedirect()">Start Guessing</button>
+        <div class="start-button" onclick="return delayRedirect(this)">
+            <div class="hover bt-1"></div>
+            <div class="hover bt-2"></div>
+            <div class="hover bt-3"></div>
+            <div class="hover bt-4"></div>
+            <div class="hover bt-5"></div>
+            <div class="hover bt-6"></div>
+            <button></button>
+        </div>
     </form>
 
     <script>
-        function delayRedirect() {
+        function delayRedirect(element) {
+            element.classList.add("clicked");
+
+            var hoverElements = document.querySelectorAll(".hover");
+            hoverElements.forEach(function(element) {
+                element.classList.add("clicked");
+            });
+
             setTimeout(function() {
-                document.getElementById('redirectForm').submit(); 
-            }, 1000);
+                document.getElementById("redirectForm").submit(); 
+            }, 1500);
+
             return false;
         }
     </script>

@@ -1,7 +1,6 @@
 <?php
 
 require "../classes/Database.php";
-require "../classes/Url.php";
 require "../classes/Phrases.php";
 require "../classes/Auth.php";
 
@@ -42,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php require "../assets/header.php"; ?>
 
     <form method="POST" class="add-phrase">
-        <h1>ADD NEW WORD</h1>
+        <h1>ADD NEW PHRASE</h1>
 
         <input  type="text" 
                 name="slovak" 

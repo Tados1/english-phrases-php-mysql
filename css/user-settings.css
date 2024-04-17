@@ -1,0 +1,76 @@
+body {
+    background-color: #131F24;
+    font-weight: 800;
+}
+
+.settings h1 {
+    text-align: center;
+    margin: 20px;
+    font-size: 50px;
+    letter-spacing: 5px;
+    font-weight: 800;
+    color: rgb(216, 216, 216);
+}
+
+.settings-container {
+    margin: 20px auto;
+    border: 3px solid #37464F;
+    border-radius: 20px;
+    width: 50vw;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-bottom: 3px solid #37464F;
+}
+
+.option p {
+    font-size: 30px;
+    color: rgb(139, 139, 139);
+}
+
+.option a {
+    text-decoration: none;
+    color: rgb(196, 196, 196);
+    font-size: 40px;
+    font-weight: 1000;
+    transition: all linear .3s;
+}
+
+.option a:hover {
+    color: rgb(255, 255, 255);
+}
+
+.option:last-child {
+    border-bottom: none;
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1200px) {  
+    .settings-container {
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width: 700px) {  
+    .option {
+        padding: 5px 20px;
+    }
+
+    .option p {
+        font-size: 18px;
+    }
+
+    .option a {
+        font-size: 30px;
+    }
+}

@@ -1,8 +1,9 @@
 body {
     background-color: #131F24;
+    color: white;
 }
 
-.add-phrase {
+.delete-user {
     height: 80vh;
     width: 600px;
     display: flex;
@@ -12,14 +13,33 @@ body {
     margin: 0 auto;
 }
 
-.add-phrase h1 {
-    font-size: 54px;
+.delete-user h1 {
+    font-size: 62px;
     letter-spacing: 5px;
     color: white;
-    margin-bottom: 30px;
+    font-weight: 800;
 }
 
-.add-phrase input {
+.delete-alert {
+    font-size: 25px;
+    margin: 10px 0px 30px 0px;
+    text-align: center;
+}
+
+.delete-alert p {
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    display: inline;
+}
+
+.delete-alert a {
+    text-decoration: none;
+    color: #ff4b4b;
+    font-weight: 600;
+}
+
+.delete-user input {
     font-size: 30px;
     width: 100%;
     background-color: transparent;
@@ -35,23 +55,23 @@ body {
     font-weight: 800;
 }
 
-.add-phrase input:focus {
+.delete-user input:focus {
     background-color: #202F36;
     border: 3px solid #3F85A7;
     border-bottom: 6px solid #3F85A7;
 }
 
-.add-phrase input[type='text']::placeholder {
+.delete-user input[type='text']::placeholder {
     color: rgb(219, 219, 219);
 }
 
-.add-phrase button {
+.delete-user button {
     width: 100%;
     border: none;
     border-bottom: 5px solid #79B933;
     border-radius: 20px;
     padding: 10px 40px;
-    background-color: #79B933;
+    background-color: #93D333;
     color: #131F24;
     font-size: 30px;
     font-weight: 800;
@@ -59,38 +79,51 @@ body {
     transition: all linear .2s;
 }
 
-.add-phrase button:hover, 
-.add-phrase button:active {
+.delete-user button:hover, 
+.delete-user button:active {
     background-color: rgba(144, 236, 46, 0.624);
     border-bottom: 5px solid rgba(62, 110, 10, 0.624);
+}
+
+.alert {
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    color: #ff4b4b;
+    margin-top: 20px;
 }
 
 /* ---------------------- CSS media queries ------------------- */
 
 @media only screen and (max-width: 800px) {
-    .add-phrase {
+    .delete-user {
         width: 300px;
     }
     
-    .add-phrase h1 {
-        font-size: 19px;
+    .delete-user h1 {
+        font-size: 35px;
+        letter-spacing: 0;
+    }
+
+    .alert {
+        font-size: 18px;
     }
 }
 
-@media only screen and (max-width: 650px) {
-    .add-phrase {
+@media only screen and (max-width: 450px) {
+    .delete-user {
         width: 250px;
     }
-    
-    .add-phrase h1 {
-        margin-bottom: 40px;
+
+    .delete-alert {
+        font-size: 20px;
     }
 
-    .add-phrase input {
+    .delete-user input {
         font-size: 20px;
     }    
 
-    .add-phrase button {
+    .delete-user button {
         font-size: 20px;
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
 class Url {
-
     public static function redirectUrl($path) {
         if (!headers_sent()) { 
             if (isset($_SERVER["HTTPS"]) and $_SERVER["HTTPS"] != "off") {
@@ -16,5 +15,4 @@ class Url {
             echo "Error: Headers already sent";
         }
     }
-    
 }

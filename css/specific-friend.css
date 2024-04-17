@@ -1,0 +1,298 @@
+body {
+    background-color: #131F24;
+    color: white;
+}
+
+.friend-statistics-container h1 {
+    font-size: 30px;
+    color: white;
+    margin: 50px;
+    text-align: center;
+}
+
+.friend-statistics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 1040px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.stats {
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    color: white;
+    border: 3px solid #37464F;
+    border-bottom: 7px solid #37464F;
+    border-radius: 20px;
+    padding: 30px 50px;
+}
+
+.icon-heading {
+    display: flex;
+    align-items: center;
+}
+
+.icon-heading i {
+    margin-right: 20px;
+    font-size: 60px;
+}
+
+.icon-heading h3 {
+    font-size: 60px;
+}
+
+.stats p {
+    color: rgb(129, 129, 129);
+    text-align: start;
+    font-size: 30px;
+}
+
+.all-answers i {
+    color: #1cb0f6;
+}
+
+.right-answers i {
+    color: #79B933;
+}
+
+.wrong_answers i {
+    color: #ff4b4b;
+}
+
+.percentage i {
+    color: #ffc800;
+}
+
+/************************ Forms and Buttons in general *************************/
+
+.friend-statistics-container form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    width: 500px;
+    padding: 30px 0px;
+}
+
+.friend-statistics-container form p {
+    width: 80%;
+    font-size: 25px;
+    margin-bottom: 10px;
+    font-weight: 800;
+    color: #131F24;
+}
+
+.friend-statistics-container button {
+    width: 70%;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+
+/***************************** Play Friend's Phrases ******************************/
+
+.play-friend-phrases {
+    background-color: #79B933;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.play-friend-phrases button {
+    background-color: #478a00;
+    border-bottom: 7px solid #386d00;
+}
+
+.play-friend-phrases button:hover,
+.play-friend-phrases button:active {
+    background-color: #2c5500;
+    border-bottom: 7px solid #1d3800;
+}
+
+/***************************** Play with Friend ******************************/
+
+.play-with-friend {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    width: 500px;
+    padding: 30px 0px;
+    background-color: #009de0;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.play-with-friend p {
+    width: 80%;
+    font-size: 25px;
+    font-weight: 800;
+    color: #131F24;
+}
+
+.play-with-friend button {
+    background-color: #00648f;
+    border-bottom: 7px solid #004c6d;
+}
+
+.play-with-friend button:hover,
+.play-with-friend button:active {
+    background-color: #084f6d;
+    border-bottom: 7px solid #022e41;
+}
+
+/***************************** Delete Friend ******************************/
+
+.delete-friend {
+    background-color: #ff4b4b;
+    margin: 50px auto;
+}
+
+.delete-friend button {
+    background-color: #db0e0e;
+    border-bottom: 5px solid #960101;
+}
+
+.delete-friend button:hover,
+.delete-friend button:active {
+    background-color: #a10808;
+    border-bottom: 5px solid #550303;
+}
+
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1200px) {
+    .friend-statistics {
+        width: 740px;
+    }
+    
+    .stats {
+        width: 350px;
+        height: 180px;
+        padding: 30px 30px;
+    }
+    
+    .icon-heading i {
+        margin-right: 20px;
+        font-size: 40px;
+    }
+    
+    .icon-heading h3 {
+        font-size: 40px;
+    }
+
+    .stats p {
+        margin-top: 10px;
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .statistics-container h1 {
+        font-size: 25px;
+    }
+
+    .friend-statistics {
+        width: 540px;
+    }
+
+    .stats {
+        width: 250px;
+        height: 150px;
+        padding: 30px 20px;
+    }
+    
+    .icon-heading i {
+        font-size: 30px;
+    }
+    
+    .icon-heading h3 {
+        font-size: 30px;
+    }
+
+    .stats p {
+        margin-top: 5px;
+        font-size: 20px;
+    }
+
+    .play-with-friend {
+        width: 400px;
+    }
+
+    .friend-statistics-container form {
+        width: 400px;
+    }
+    
+    .friend-statistics-container form p {
+        font-size: 20px;
+    }
+    
+    .friend-statistics-container button {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .friend-statistics-container h1 {
+        margin: 30px auto;
+        font-size: 20px;
+    }
+
+    .friend-statistics {
+        width: 380px;
+        gap: 20px;
+    }
+    
+    .stats {
+        width: 150px;
+        height: 100px;
+        padding: 10px 0px 10px 15px;
+    }
+    
+    .icon-heading i {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    
+    .icon-heading h3 {
+        font-size: 20px;
+    }
+
+    .stats p {
+        font-size: 14px;
+    }
+    
+    .play-with-friend {
+        padding: 0px;
+        width: 300px;
+    }
+
+    .friend-statistics-container form {
+        width: 300px;
+    }
+    
+    .friend-statistics-container form p {
+        font-size: 17px;
+    }
+    
+    .friend-statistics-container button {
+        font-size: 20px;
+    }
+}
+
+
+

@@ -1,6 +1,7 @@
 <?php
 
 require "classes/Database.php";
+require "classes/Url.php";
 require "classes/Users.php";
 
 session_start();
@@ -17,26 +18,26 @@ if(isset($_GET["token"])) {
 
             if(Users::updateVerifyStatus($connection, $token)) {
                 $_SESSION['status'] = "Your account has been verified successfully!";
-                header("Location: index.php");
+                Url::redirectUrl("/english-phrases-php/index.php");
                 exit(0);
             } else {
                 $_SESSION['status'] = "Verification failed!";
-                header("Location: index.php");
+                Url::redirectUrl("/english-phrases-php/index.php");
                 exit(0);
             }
         } else {
             $_SESSION['status'] = "Email already verified. Please login.";
-            header("Location: index.php");
+            Url::redirectUrl("/english-phrases-php/index.php");
             exit(0);
         }
     } else {
         $_SESSION['status'] = "This token does not exist.";
-        header("Location: index.php");
+        Url::redirectUrl("/english-phrases-php/index.php");
     }
 
 } else {
     $_SESSION['status'] = "Not Allowed";
-    header("Location: index.php");
+    Url::redirectUrl("/english-phrases-php/index.php");
 }
 
 ?>

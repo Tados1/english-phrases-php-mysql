@@ -1,0 +1,124 @@
+* {
+    font-weight: 800;
+}
+
+body {
+    background-color: #131F24;
+    color: white;
+}
+
+.results {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.player {
+    position: relative;
+    width: 600px;
+    background-color: #193746;
+    border: 3px solid #37464F;
+    border-bottom: 7px solid #37464F;
+    border-radius: 20px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.player h1 {
+    text-align: center;
+    letter-spacing: 4px;
+    font-size: 50px;
+}
+
+.right, .wrong {
+    font-size: 50px;
+    margin-left: 50px;
+}
+
+.main-icon i {
+    position: absolute;
+    transform: rotate(-14deg);
+    top: 27%;
+    right: -5%;
+    font-size: 200px;
+}
+
+.right p {
+    display: inline;
+}
+
+.wrong p {
+    display: inline;
+}
+
+.win i {
+    color: #ffc800;
+}
+
+.loss i {
+    color: #ff2828;
+}
+
+.tie i {
+    color: #1cb0f6;
+}
+
+.right i {
+    color: #58cc02;
+}
+
+.wrong i {
+    color: #ff2828;
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1400px) {  
+    .results {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .player {
+        width: 400px;
+        padding: 10px;
+    }
+
+    .player h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .right, .wrong {
+        font-size: 40px;
+        margin-left: 20px;
+    }
+
+    .main-icon i {
+        top: 35%;
+        font-size: 150px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .player {
+        width: 300px;
+    }
+
+    .player h1 {
+        font-size: 25px;
+        letter-spacing: 0;
+    }
+
+    .right, .wrong {
+        font-size: 30px;
+    }
+
+    .main-icon i {
+        font-size: 120px;
+    }
+}

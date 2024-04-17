@@ -1,0 +1,183 @@
+body {
+    background-color: #131F24;
+}
+
+.statistics-container h1 {
+    font-size: 30px;
+    color: white;
+    margin: 50px;
+    text-align: center;
+}
+
+.statistics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 1040px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.stats {
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    color: white;
+    border: 3px solid #37464F;
+    border-bottom: 7px solid #37464F;
+    border-radius: 20px;
+    padding: 30px 50px;
+}
+
+.icon-heading {
+    display: flex;
+    align-items: center;
+}
+
+.icon-heading i {
+    margin-right: 20px;
+    font-size: 60px;
+}
+
+.icon-heading h3 {
+    font-size: 60px;
+}
+
+.stats p {
+    color: rgb(129, 129, 129);
+    text-align: start;
+    font-size: 30px;
+}
+
+.all-answers i {
+    color: #1cb0f6;
+}
+
+.right-answers i {
+    color: #79B933;
+}
+
+.wrong_answers i {
+    color: #ff4b4b;
+}
+
+.percentage i {
+    color: #ffc800;
+}
+
+.message h3 {
+    text-align: center;
+    font-size: 50px;
+    margin-top: 20px;
+    color: white;
+}
+
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1200px) {
+    .statistics {
+        width: 740px;
+    }
+    
+    .stats {
+        width: 350px;
+        height: 180px;
+        padding: 30px 30px;
+    }
+    
+    .icon-heading i {
+        margin-right: 20px;
+        font-size: 40px;
+    }
+    
+    .icon-heading h3 {
+        font-size: 40px;
+    }
+
+    .stats p {
+        margin-top: 10px;
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .statistics-container h1 {
+        font-size: 25px;
+    }
+
+    .statistics {
+        width: 540px;
+    }
+    
+    .stats {
+        width: 250px;
+        height: 150px;
+        padding: 30px 20px;
+    }
+    
+    .icon-heading i {
+        font-size: 30px;
+    }
+    
+    .icon-heading h3 {
+        font-size: 30px;
+    }
+
+    .stats p {
+        margin-top: 5px;
+        font-size: 20px;
+    }
+
+    .message h3 {
+        font-size: 35px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .statistics-container h1 {
+        width: 60vw;
+        margin: 50px auto;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .statistics-container h1 {
+        width: 80vw;
+        margin: 30px auto;
+    }
+
+    .statistics {
+        width: 380px;
+        gap: 20px;
+    }
+    
+    .stats {
+        width: 150px;
+        height: 100px;
+        padding: 10px 0px 10px 15px;
+    }
+    
+    .icon-heading i {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    
+    .icon-heading h3 {
+        font-size: 20px;
+    }
+
+    .stats p {
+        font-size: 14px;
+    }
+
+    .message h3 {
+        font-size: 20px;
+    }
+}
+
+
+
+

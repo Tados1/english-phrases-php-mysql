@@ -13,6 +13,10 @@ $id_user = $_SESSION["logged_in_user_id"];
 $connection = Database::databaseConnection();
 $phrases = Phrases::get($connection, $id_user);
 
+if(empty($phrases)) {
+    unset($_SESSION["random_phrase"]);
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     Phrases::delete($connection, $_POST["delete_id"]);
     header("Location: {$_SERVER['PHP_SELF']}");
@@ -53,8 +57,8 @@ foreach ($phrases as $phrase) {
                 <?php foreach($filtered_phrases as $phrase): ?>
                     <div class="one-phrase">
                         <div class="phrases">
-                            <p><?= htmlspecialchars($phrase["slovak"]) ?></p>
-                            <p><?= htmlspecialchars($phrase["english"]) ?></p>
+                            <p><?= $phrase["slovak"] ?></p>
+                            <p><?= $phrase["english"] ?></p>
                         </div>
                         <div class="btns">
                             <form method="post">

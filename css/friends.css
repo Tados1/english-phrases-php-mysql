@@ -1,0 +1,252 @@
+body {
+    background-color: #131F24;
+    color: white;
+}
+
+.friends-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    gap: 40px;
+    height: 95vh;
+}
+
+/*********************************** Incoming Requests ***********************************/
+
+.incoming-request {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #79B933;
+    border-radius: 20px;
+    width: 500px;
+    padding: 30px 0px;
+}
+
+.incoming-request p {
+    width: 80%;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 800;
+    color: #131F24;
+    text-align: center;
+}
+
+.incoming-request button {
+    width: 70%;
+    text-decoration: none;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    color: #ffffff;
+    background-color: #478a00;
+    padding: 10px;
+    border: none;
+    border-bottom: 7px solid #386d00;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+
+.incoming-request button:hover,
+.incoming-request button:active {
+    background-color: #2c5500;
+    border-bottom: 7px solid #1d3800;
+}
+
+.waiting-button i {
+    margin-left: 20px;
+}
+
+/*********************************** Send Request ***********************************/ 
+
+.send-request {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    background-color: #009de0;
+    border-radius: 20px;
+    padding: 30px 0px;
+}
+
+.send-request p {
+    width: 70%;
+    font-size: 20px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    font-weight: 800;
+    color: #131F24;
+    text-align: center;
+}
+
+.send-request input {
+    width: 70%;
+    font-size: 30px;
+    background-color: #e7e7e7;
+    color: #007cb1;
+    border: 3px solid #007cb1;
+    border-bottom: 7px solid #007cb1;
+    border-radius: 20px;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 10px 0px;
+    text-align: center;
+    transition: all linear 0.2s;
+    font-weight: 800;
+}
+
+.send-request input:focus {
+    background-color: #202F36;
+    border: 3px solid #3F85A7;
+    border-bottom: 6px solid #3F85A7;
+}
+
+.send-request input[type='email']::placeholder {
+    color: #007cb1;
+}
+
+.send-request button {
+    width: 70%;
+    border: none;
+    border-bottom: 5px solid #007cb1;
+    border-radius: 20px;
+    padding: 10px 40px;
+    background-color: #0067a3;
+    color: #e7e7e7;
+    font-size: 30px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+
+.send-request button:hover, 
+.send-request button:active {
+    background-color: rgb(0, 85, 134);
+    border-bottom: 5px solid rgb(7, 133, 206);;
+}
+
+.send-request button i {
+    margin-left: 10px;
+}
+
+.alert {
+    width: 100%;
+}
+
+.alert p {
+    color: #ff4b4b;
+    margin: 10px auto;
+}
+
+.success {
+    width: 100%;
+    text-align: center;
+}
+
+.success p {
+    color: #79B933;
+    margin: 10px auto;
+}
+
+/*********************************** List of Friends ***********************************/
+
+.friends {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    background-color: transparent;
+    color: white;
+    border: 3px solid #37464F;
+    border-bottom: 7px solid #37464F;
+    border-radius: 20px;
+    padding: 30px 0px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.friends h3 {
+    font-size: 40px;
+    color: #ffc800;
+}
+
+.friends a {
+    width: 100%;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    padding: 10px 30px;
+    transition: all linear .2s;
+}
+
+.friends a:hover {
+    background-color: #2b4550;
+}
+
+.friends i {
+    margin-right: 20px;
+    color: #ffc400;
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 800px) {
+    .friends-container {
+        height: 70vh;
+    }
+}
+
+@media only screen and (max-width: 570px) {
+    .friends-container {
+        height: 70vh;
+    }
+
+    .incoming-request {
+        width: 400px;
+        padding: 20px 0px;
+    }
+    .incoming-request button {
+        font-size: 25px;
+    }
+    
+    .waiting-button i {
+        margin-left: 10px;
+    }
+
+    .send-request {
+        width: 400px;
+        padding: 20px 0px;
+    }
+
+    .send-request input {
+        font-size: 20px;
+    }
+
+    .send-request button {
+        font-size: 20px;
+    }
+
+    .friends {
+        width: 400px;
+        padding: 20px 0px;
+    }
+
+    .friends h3 {
+        font-size: 30px;
+    }
+
+    .friends a {
+        font-size: 25px;
+    }
+
+    .friends i {
+        margin-right: 10px;
+    }
+}
