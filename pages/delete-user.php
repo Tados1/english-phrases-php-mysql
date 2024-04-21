@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             Friendship::deleteUser($connection, $id_user);
             Phrases::deleteAllPhrases($connection, $id_user);
             Duels::deleteDuelAfterDeletedUser($connection, $id_user);
+            Duels::deletePhrasesAfterDeletedUser($connection, $id_user);
             $_SESSION = array();
             session_destroy();
             Url::redirectUrl("/english-phrases-php/index.php");

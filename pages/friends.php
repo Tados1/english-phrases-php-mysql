@@ -4,6 +4,7 @@ require "../classes/Users.php";
 require "../classes/Friendship.php";
 require "../classes/Auth.php";
 require "../classes/Url.php";
+require "../classes/Duels.php";
 
 session_start();
 
@@ -104,7 +105,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="friends">
             <h3>Buddy Club:</h3>
             <?php foreach($friends as $friend): ?>
-                <a href="specific-friend.php?id=<?= $friend["friend_id"] ?>"><i class="fa-solid fa-circle-user"></i><?= $friend["friend_info"]?></a>
+                <div class="one-friend">
+                    <?php if(!Duels::checkExistDuelForFriends($connection, $id_user, $friend["friend_id"])): ?>
+                        <a href="specific-friend.php?id=<?= $friend["friend_id"] ?>"><i class="fa-solid fa-circle-user"></i><?= $friend["friend_info"]?></a>
+                    <?php else: ?>
+                        <a href="specific-friend.php?id=<?= $friend["friend_id"] ?>"><i class="fa-solid fa-bell"></i><?= $friend["friend_info"]?></a>
+                    <?php endif; ?>
+                </div>
             <?php endforeach; ?>
         </div>
         <?php else: ?>

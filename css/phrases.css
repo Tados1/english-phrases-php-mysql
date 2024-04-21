@@ -55,7 +55,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 20px;
     width: 900px;
 }
 
@@ -93,7 +92,6 @@ body {
 
 .delete {
     font-size: 30px;
-    font-weight: 1000;
     color: #131F24;
     border: none;
     width: 100%;
@@ -109,13 +107,12 @@ body {
     border-radius: 0px 20px 20px 0px;
     border: none;
     background-color: #79B933;
-    font-size: 22px;
+    font-size: 30px;
     cursor: pointer;
     clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 .edit a i {
-    font-size: 30px;
     color: #131F24;
     width: 100%;
     padding: 7px 0px;
@@ -164,12 +161,16 @@ body {
 }
 
 @media only screen and (max-width: 700px) {
+    .search-form input {
+        font-size: 20px;
+    }
+
     .all-phrases-container {
         width: 90%;
     }   
 
     .phrases {
-        width: calc(100% - 170px);;
+        width: calc(100% - 100px);
     }
 
     .phrases p {
@@ -178,6 +179,23 @@ body {
     }
     
     .btns {
-        width: 140px;
+        width: 100px;
     }
+
+    .delete {
+        font-size: 20px;
+    }
+
+    .edit {
+        font-size: 20px;
+    }
+
+    .edit a i {
+        padding: 7px 0px;
+    }
+
+    .no-phrases p {
+        font-size: 20px;
+    }
+
 }

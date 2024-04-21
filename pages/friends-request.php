@@ -4,6 +4,7 @@ require "../classes/Users.php";
 require "../classes/Friendship.php";
 require "../classes/Auth.php";
 require "../classes/Url.php";
+require "../classes/Duels.php";
 
 session_start();
 

@@ -18,6 +18,7 @@ body {
 .player {
     position: relative;
     width: 600px;
+    height: 500px;
     background-color: #193746;
     border: 3px solid #37464F;
     border-bottom: 7px solid #37464F;
@@ -32,17 +33,23 @@ body {
     font-size: 50px;
 }
 
+.right-wrong-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 .right, .wrong {
     font-size: 50px;
-    margin-left: 50px;
 }
 
 .main-icon i {
     position: absolute;
     transform: rotate(-14deg);
-    top: 27%;
+    top: 55%;
     right: -5%;
-    font-size: 200px;
+    font-size: 270px;
+    z-index: 0;
 }
 
 .right p {
@@ -54,11 +61,11 @@ body {
 }
 
 .win i {
-    color: #ffc800;
+    color: #ffc8008e;
 }
 
 .loss i {
-    color: #ff2828;
+    color: #ff28289c;
 }
 
 .tie i {
@@ -73,45 +80,47 @@ body {
     color: #ff2828;
 }
 
+.show-phrases {
+     display: flex;
+     justify-content: space-evenly;
+}
+
+.show-right p {
+    color: #58cc02;
+}
+
+.show-wrong {
+    margin-left: 40px;
+    z-index: 1;
+}
+
+.show-wrong p {
+    color: #ff2828;
+    text-shadow: 0px 0px 5px #193746;
+}
+
 /* ---------------------- CSS media queries ------------------- */
 
 @media only screen and (max-width: 1400px) {  
     .results {
         flex-direction: column;
-        gap: 40px;
+        gap: 20px;
     }
 }
 
 @media only screen and (max-width: 700px) {
-    .player {
-        width: 400px;
-        padding: 10px;
+    .results {
+        margin-top: 20px;
     }
-
-    .player h1 {
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
-
-    .right, .wrong {
-        font-size: 40px;
-        margin-left: 20px;
-    }
-
-    .main-icon i {
-        top: 35%;
-        font-size: 150px;
-    }
-}
-
-@media only screen and (max-width: 450px) {
     .player {
         width: 300px;
+        padding: 10px;
     }
 
     .player h1 {
         font-size: 25px;
         letter-spacing: 0;
+        margin-bottom: 20px;
     }
 
     .right, .wrong {
@@ -119,6 +128,11 @@ body {
     }
 
     .main-icon i {
-        font-size: 120px;
+        top: 53%;
+        font-size: 150px;
     }
+
+    .show-phrases p {
+        font-size: 10px;
+   }
 }

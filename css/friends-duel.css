@@ -105,23 +105,38 @@ body {
 /* ---------------------- CSS media queries ------------------- */
 
 @media only screen and (max-width: 700px) {
+    .counter {
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+
     .guess-word {
         width: 300px;
     }
+
     .additional-class h1 {
-        font-size: 30px;
+        font-size: 20px;
+        text-align: center;
     }
 
     .right-answer h1 {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     .wrong-answer h1 {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .wrong-answer h3 {
-        font-size: 25px;
+        font-size: 20px;
+    }
+    
+    .guess-word form input {
+        font-size: 20px;
+    }
+
+    .guess-word form button {
+       font-size: 20px;
     }
 }
 

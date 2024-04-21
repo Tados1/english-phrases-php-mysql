@@ -1,9 +1,12 @@
 <?php
 
 require "../classes/Database.php";
-require "../classes/Phrases.php";
+require "../classes/Phrases.php"; 
+require "../classes/Users.php";
 require "../classes/Auth.php";
 require "../classes/Url.php";
+require "../classes/Friendship.php";
+require "../classes/Duels.php";
 
 session_start();
 
@@ -15,15 +18,32 @@ $id_user = $_SESSION["logged_in_user_id"];
 
 $connection = Database::databaseConnection();
 
+
 if (!isset($_SESSION["random_phrase"])) {
     $_SESSION["random_phrase"] = Phrases::getRandomPhrase($connection, $id_user);
 }
 
-//for cookies
-$expiration_time = strtotime('2038-01-19');
-$guess_counter = 0;
-$right_answer = 0;
-$wrong_answer = 0;
+$phrases_counter = Users::getUserInfoById($connection, $id_user, "phrases_counter");
+$right_answers = Users::getUserInfoById($connection, $id_user, "right_answers");
+$wrong_answers = Users::getUserInfoById($connection, $id_user, "wrong_answers");
+
+if($phrases_counter) {
+    $counter_all_answers = $phrases_counter;
+} else {
+    $counter_all_answers = 0;
+}
+
+if($right_answers) {
+    $counter_right_answers = $right_answers;
+} else {
+    $counter_right_answers = 0;
+}
+
+if($wrong_answers) {
+    $counter_wrong_answers = $wrong_answers;
+} else {
+    $counter_wrong_answers = 0;
+}
 
 $user_word = null;
 $correct_guess = false;
@@ -32,45 +52,34 @@ $random_phrase = $_SESSION["random_phrase"];
 $feedback_message = "";
 $class = "phrase";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_COOKIE["user_$id_user"])) {
-        $guess_counter = $_COOKIE["user_$id_user"];
-    } else {
-        $guess_counter = 0;
-    }
 
-    $guess_counter++;
-    setcookie("user_$id_user", $guess_counter, $expiration_time, "/");
+if ($_SESSION["counter_to_10"] === 10) {
+    Url::redirectUrl("/english-phrases-php/pages/guess-result.php");
+}
+elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $counter_all_answers++;
+
+    Users::updateScore($connection, $id_user, "phrases_counter", $counter_all_answers);
 
     $_SESSION["counter_to_10"]++;
 
     ob_start();
     $user_word = htmlspecialchars($_POST["user_word"]);
-    if (strtolower($user_word) === strtolower($random_phrase["english"])) {
-        if (isset($_COOKIE["right_answers_$id_user"])) {
-            $right_answer = $_COOKIE["right_answers_$id_user"];
-        } else {
-            $right_answer = 0;
-        }
-
-        $right_answer++;
-        setcookie("right_answers_$id_user", $right_answer, $expiration_time, "/");
+    
+    if (strtolower(preg_replace('/[^a-z0-9]+/i', '', $user_word)) === strtolower(preg_replace('/[^a-z0-9]+/i', '', $random_phrase["english"]))) {
+        $counter_right_answers++;
+        Users::updateScore($connection, $id_user, "right_answers", $counter_right_answers);
 
         $_SESSION["correct_to_10"]++;
 
         $correct_guess = true;
         $feedback_message = "You guessed it!";
         $class = "right-answer";
-        $refresh_time = 0.5;
-    } else {
-        if (isset($_COOKIE["wrong_answer_$id_user"])) {
-            $wrong_answer = $_COOKIE["wrong_answer_$id_user"];
-        } else {
-            $wrong_answer = 0;
-        }
+        $refresh_time = 1;
 
-        $wrong_answer++;
-        setcookie("wrong_answer_$id_user", $wrong_answer, $expiration_time, "/");
+    } else {
+        $counter_wrong_answers++;
+        Users::updateScore($connection, $id_user, "wrong_answers", $counter_wrong_answers);
 
         $_SESSION["incorrect_to_10"]++;
 
@@ -81,16 +90,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $refresh_time = 1.5;
     }
 
-    if ($_SESSION["counter_to_10"] === 10) {
-        Url::redirectUrl("/english-phrases-php/pages/guess-result.php");
-    }
-
     ob_end_flush();
 
     header("Refresh: $refresh_time");
     $_SESSION["random_phrase"] = Phrases::getRandomPhrase($connection, $id_user);
     $random_phrase = $_SESSION["random_phrase"];
 }
+
+
 
 ?>
 

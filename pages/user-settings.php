@@ -1,6 +1,9 @@
 <?php 
 
 require "../classes/Auth.php";
+require "../classes/Database.php";
+require "../classes/Friendship.php";
+require "../classes/Duels.php";
 
 session_start();
 

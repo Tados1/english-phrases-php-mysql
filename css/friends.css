@@ -9,7 +9,7 @@ body {
     align-items: center; 
     justify-content: center; 
     gap: 40px;
-    height: 95vh;
+    margin-top: 60px;
 }
 
 /*********************************** Incoming Requests ***********************************/
@@ -130,8 +130,10 @@ body {
     border-bottom: 5px solid rgb(7, 133, 206);;
 }
 
-.send-request button i {
+.send-request button .fa-user-plus {
     margin-left: 10px;
+    background-color: transparent;
+    color: white;
 }
 
 .alert {
@@ -171,6 +173,13 @@ body {
     margin-bottom: 30px;
 }
 
+.one-friend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .friends h3 {
     font-size: 40px;
     color: #ffc800;
@@ -190,30 +199,40 @@ body {
     background-color: #2b4550;
 }
 
-.friends i {
+.one-friend .fa-circle-user {
     margin-right: 20px;
-    color: #ffc400;
+    color: #1cb0f6;
+}
+
+/* Notification of Duel */
+
+.one-friend .fa-bell {
+    margin-right: 20px;
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 5px 7px;
+    color: #b66e28;
+    background-color: #ffc800;
 }
 
 /* ---------------------- CSS media queries ------------------- */
 
 @media only screen and (max-width: 800px) {
     .friends-container {
-        height: 70vh;
-    }
-}
-
-@media only screen and (max-width: 570px) {
-    .friends-container {
-        height: 70vh;
-    }
+        margin-top: 30px;
+    }  
 
     .incoming-request {
-        width: 400px;
-        padding: 20px 0px;
+        width: 300px;
+        padding: 10px 0px;
     }
+
+    .incoming-request p {
+        font-size: 17px;
+    }
+
     .incoming-request button {
-        font-size: 25px;
+        font-size: 18px;
     }
     
     .waiting-button i {
@@ -221,32 +240,44 @@ body {
     }
 
     .send-request {
-        width: 400px;
-        padding: 20px 0px;
+        width: 300px;
+        padding: 10px 0px;
+    }
+
+    .send-request p {
+        font-size: 17px; 
     }
 
     .send-request input {
-        font-size: 20px;
+        font-size: 18px;
+        margin-bottom: 10px;
+        padding: 5px 0px;
     }
 
     .send-request button {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .friends {
-        width: 400px;
-        padding: 20px 0px;
+        width: 300px;
+        padding: 10px 0px;
     }
 
     .friends h3 {
-        font-size: 30px;
+        font-size: 22px;
     }
 
     .friends a {
-        font-size: 25px;
+        font-size: 18px;
     }
 
     .friends i {
         margin-right: 10px;
+    }
+
+    .one-friend .fa-bell {
+        margin-right: 20px;
+        font-size: 12px;
+        padding: 4px;
     }
 }

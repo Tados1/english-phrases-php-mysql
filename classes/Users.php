@@ -340,4 +340,23 @@ class Users {
             echo "Error type: " . $e->getMessage();
         }
     }
+
+    public static function updateScore($connection, $id_user, $column, $value) { 
+        $sql = "UPDATE users SET $column = :value WHERE id_user = :id_user";
+    
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(':id_user', $id_user, PDO::PARAM_INT);
+        $stmt->bindValue(':value', $value, PDO::PARAM_INT);
+    
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                throw new Exception("Failed to update score");
+            }
+        } catch (Exception $e) {
+            error_log("Error with function updateScore\n", 3, "../errors/error.log");
+            echo "Error type: " . $e->getMessage();
+        }
+    }
 }

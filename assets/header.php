@@ -1,3 +1,14 @@
+<?php
+
+$connection = Database::databaseConnection();
+$id_user = $_SESSION["logged_in_user_id"];
+
+$check_exist_duel = Duels::checkExistDuelForHeader($connection, $id_user);
+
+$check_friend_request = Friendship::checkRequest($connection, $id_user, "requested");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +37,27 @@
                 <li><a href="phrases.php">All Phrases</a></li>
                 <li><a href="add-phrases.php">Add Phrase</a></li>
                 <li><a href="statistics.php">Statistics</a></li>
-                <li><a href="friends.php">Friends</a></li>
+                <li>
+                    <?php if($check_exist_duel && $check_friend_request): ?>
+                        <div class="nav-friends">
+                            <a href="friends.php" class="active">Friends</a>
+                            <i class="fa-solid fa-bell"></i>
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                    <?php elseif($check_exist_duel): ?>  
+                        <div class="nav-friends">
+                            <a href="friends.php" class="active">Friends</a>   
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                    <?php elseif($check_friend_request): ?>  
+                        <div class="nav-friends">
+                            <a href="friends.php" class="active">Friends</a>
+                        <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                    <?php else: ?>
+                        <a href="friends.php" class="non-active">Friends</a>
+                    <?php endif; ?>
+                </li>
                 <li><a class="logout" href="../log-out.php">Log Out</a></li>
                 <li><a href="user-settings.php"><i class="fa-solid fa-gear"></i></a></li>
             </ul>

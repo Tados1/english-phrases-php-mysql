@@ -99,22 +99,22 @@ body {
 
 @media only screen and (max-width: 800px) {
     .friends-request {
-        width: 400px;
+        width: 300px;
     }
 
     .friends-request p {
-        font-size: 20px;
+        font-size: 17px;
     }
 
     .btns button {
-        font-size: 20px;
+        font-size: 17px;
     }
 
     .no-friends-requests {
-        width: 400px;
+        width: 300px;
     }
     
     .no-friends-requests p {
-        font-size: 25px;
+        font-size: 20px;
     }
 }

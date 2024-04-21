@@ -32,6 +32,7 @@ body {
 
 .additional-class h1 {
     font-size: 40px;
+    text-align: center;
 }
 
 .phrase h1 {
@@ -105,28 +106,41 @@ body {
 /* ---------------------- CSS media queries ------------------- */
 
 @media only screen and (max-width: 700px) {
+    .counter {
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+
     .guess-word {
         width: 300px;
     }
     .additional-class h1 {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     .right-answer h1 {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     .wrong-answer h1 {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .wrong-answer h3 {
-        font-size: 25px;
+        font-size: 20px;
+    }
+    
+    .guess-word form input {
+        font-size: 20px;
+    }
+
+    .guess-word form button {
+       font-size: 20px;
     }
 
     .no-phrases p {
         color: #ff4b4b;
-        font-size: 25px;
+        font-size: 20px;
     }
 }
 

@@ -1,6 +1,7 @@
 <?php
 
 require "../classes/Auth.php";
+require "../classes/Friendship.php";
 require "../classes/Duels.php";
 require "../classes/Users.php";
 require "../classes/Database.php";
@@ -22,17 +23,22 @@ $receiver_name = Users::getUserInfoById($connection, $data[0]["receiver"], "name
 $receiver_right = $data[0]["receiver_right"];
 $receiver_wrong = $data[0]["receiver_wrong"];
 $receiver_check = $data[0]["first_player_check"];
+$receiver_right_phrases = Duels::getRightPhrases($connection, $data[0]["sender"], $data[0]["receiver"], $data[0]["receiver"]);
+$receiver_wrong_phrases = Duels::getWrongPhrases($connection, $data[0]["sender"], $data[0]["receiver"], $data[0]["receiver"]);
 
 $sender = $data[0]["sender"];
 $sender_name = Users::getUserInfoById($connection, $data[0]["sender"], "name");
 $sender_right = $data[0]["sender_right"];
 $sender_wrong = $data[0]["sender_wrong"];
 $sender_check = $data[0]["second_player_check"];
+$sender_right_phrases = Duels::getRightPhrases($connection, $data[0]["sender"], $data[0]["receiver"], $data[0]["sender"]);
+$sender_wrong_phrases = Duels::getWrongPhrases($connection, $data[0]["sender"], $data[0]["receiver"], $data[0]["sender"]);
 
 $deleteDuel = $receiver_check === 1 && $sender_check === 1 ? true : false;
 
 if ($deleteDuel) {
     Duels::deleteDuel($connection, $id_user, $friend_id);
+    Duels::deletePhrasesAfterSeeing($connection, $id_user, $friend_id);
 }
 
 ?>
@@ -53,14 +59,17 @@ if ($deleteDuel) {
     <section class="results">
         <section class="first-player player">
             <h1><?= $sender_name; ?></h1>
-            <div class="right">
-                <i class="fa-solid fa-circle-check"></i>
-                <p><?= $sender_right !== null ? $sender_right : 0; ?></p>
+            <div class="right-wrong-section">
+                <div class="right">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <p><?= $sender_right !== null ? $sender_right : 0; ?></p>
+                </div>
+                <div class="wrong">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <p><?= $sender_wrong !== null ? $sender_wrong : 0; ?></p>
+                </div>
             </div>
-            <div class="wrong">
-                <i class="fa-solid fa-circle-xmark"></i>
-                <p><?= $sender_wrong !== null ? $sender_wrong : 0; ?></p>
-            </div>
+    
             <?php if($sender_right > $receiver_right): ?>
                 <div class="main-icon win">  
                     <i class="fa-solid fa-award"></i>
@@ -74,17 +83,33 @@ if ($deleteDuel) {
                     <i class="fa-solid fa-scale-balanced"></i>
                 </div>
             <?php endif; ?>
+
+            <div class="show-phrases">
+                <div class="show-right">
+                    <?php foreach($sender_right_phrases as $right): ?>
+                        <p>+ <?= $right["right"]; ?></p>
+                    <?php endforeach; ?>
+                </div>
+                <div class="show-wrong">
+                    <?php foreach($sender_wrong_phrases as $wrong): ?>
+                        <p>- <?= $wrong["wrong"]; ?></p>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </section>
 
         <section class="second-player player">
             <h1><?= $receiver_name; ?></h1>
-            <div class="right">
-                <i class="fa-solid fa-circle-check"></i>
-                <p><?= $receiver_right !== null ? $receiver_right : 0; ?></p>
-            </div>
-            <div class="wrong">
-                <i class="fa-solid fa-circle-xmark"></i>
-                <p><?= $receiver_wrong !== null ? $receiver_wrong : 0; ?></p>
+
+            <div class="right-wrong-section">
+                <div class="right">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <p><?= $receiver_right !== null ? $receiver_right : 0; ?></p>
+                </div>
+                <div class="wrong">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <p><?= $receiver_wrong !== null ? $receiver_wrong : 0; ?></p>
+                </div>
             </div>
             <?php if($receiver_right > $sender_right): ?>
                 <div class="main-icon win">
@@ -99,6 +124,19 @@ if ($deleteDuel) {
                     <i class="fa-solid fa-scale-balanced"></i>
                 </div>
             <?php endif; ?>
+
+            <div class="show-phrases">
+                <div class="show-right">
+                    <?php foreach($receiver_right_phrases as $right): ?>
+                        <p>+ <?= $right["right"]; ?></p>
+                    <?php endforeach; ?>
+                </div>
+                <div class="show-wrong">
+                    <?php foreach($receiver_wrong_phrases as $wrong): ?>
+                        <p>- <?= $wrong["wrong"]; ?></p>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </section>   
     </section>
 </body>

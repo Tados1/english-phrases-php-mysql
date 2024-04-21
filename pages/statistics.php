@@ -2,8 +2,9 @@
 
 require "../classes/Database.php";
 require "../classes/Users.php";
-require "../classes/Url.php";
 require "../classes/Auth.php";
+require "../classes/Friendship.php";
+require "../classes/Duels.php";
 
 session_start();
 
@@ -15,18 +16,15 @@ $id_user = $_SESSION["logged_in_user_id"];
 
 $connection = Database::databaseConnection();
 $user_name = Users::getUserInfoById($connection, $id_user, "name");
+$phrases_counter = Users::getUserInfoById($connection, $id_user, "phrases_counter");
+$right_answers = Users::getUserInfoById($connection, $id_user, "right_answers");
+$wrong_answers = Users::getUserInfoById($connection, $id_user, "wrong_answers");
 
 $message = "Play and see where you stand!";
 
-if(isset($_COOKIE["user_$id_user"])) {
-    $all_answers = $_COOKIE["user_$id_user"];
-} else {
-    $all_answers = 0;
-}
 
-if(isset($_COOKIE["right_answers_$id_user"])) {
-    $right_answers = $_COOKIE["right_answers_$id_user"];
-    $accuracy_percentage = round(($right_answers / $all_answers) * 100);
+if($right_answers) {
+    $accuracy_percentage = round(($right_answers / $phrases_counter) * 100);
 
     switch (true) {
         case $accuracy_percentage >= 85:
@@ -47,12 +45,6 @@ if(isset($_COOKIE["right_answers_$id_user"])) {
 } else {
     $right_answers = 0;
     $accuracy_percentage = 0;
-}
-
-if(isset($_COOKIE["wrong_answer_$id_user"])) {
-    $wrong_answers = $_COOKIE["wrong_answer_$id_user"];
-} else {
-    $wrong_answers = 0;
 }
 
 ?>
@@ -76,7 +68,7 @@ if(isset($_COOKIE["wrong_answer_$id_user"])) {
             <div class="stats all-answers">
                 <div class="icon-heading all-answers">
                     <i class="fa-regular fa-thumbs-up"></i>
-                    <h3><?= $all_answers; ?></h3>
+                    <h3><?= $phrases_counter; ?></h3>
                 </div>
                 <p>Total Phrases Tried</p>
             </div>

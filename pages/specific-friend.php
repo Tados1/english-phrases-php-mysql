@@ -18,6 +18,16 @@ $friend_id = isset($_GET["id"]) ? $_GET["id"] : null;
 
 $connection = Database::databaseConnection();
 $user_name = Users::getUserInfoById($connection, $friend_id, "name");
+$friend_phrases_counter = Users::getUserInfoById($connection, $friend_id, "phrases_counter");
+$friend_right_answers = Users::getUserInfoById($connection, $friend_id, "right_answers");
+$friend_wrong_answers = Users::getUserInfoById($connection, $friend_id, "wrong_answers");
+
+if($friend_right_answers) {
+    $accuracy_percentage = round(($friend_right_answers / $friend_phrases_counter) * 100);
+} else {
+    $friend_right_answers = 0;
+    $accuracy_percentage = 0;
+}
 
 //for duel
 $check_exist = Duels::checkExistDuel($connection, $friend_id, $id_user);
@@ -28,27 +38,6 @@ $second_player_check = Duels::getInfo($connection, $friend_id, $id_user, "second
 $check_sender = Duels::getInfo($connection, $friend_id, $id_user, "sender");
 $check_receiver = Duels::getInfo($connection, $friend_id, $id_user, "receiver");
 
-
-
-if(isset($_COOKIE["user_$friend_id"])) {
-    $all_answers = $_COOKIE["user_$friend_id"];
-} else {
-    $all_answers = 0;
-}
-
-if(isset($_COOKIE["right_answers_$friend_id"])) {
-    $right_answers = $_COOKIE["right_answers_$friend_id"];
-    $accuracy_percentage = round(($right_answers / $all_answers) * 100);
-} else {
-    $right_answers = 0;
-    $accuracy_percentage = 0;
-}
-
-if(isset($_COOKIE["wrong_answer_$friend_id"])) {
-    $wrong_answers = $_COOKIE["wrong_answer_$friend_id"];
-} else {
-    $wrong_answers = 0;
-}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["play"])) {
@@ -112,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="stats all-answers">
                 <div class="icon-heading all-answers">
                     <i class="fa-regular fa-thumbs-up"></i>
-                    <h3><?= $all_answers; ?></h3>
+                    <h3><?= $friend_phrases_counter; ?></h3>
                 </div>
                 <p>Total Phrases Tried</p>
             </div>
@@ -120,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="stats right-answers">
                 <div class="icon-heading right-answers">
                     <i class="fa-solid fa-circle-check"></i>
-                    <h3><?= $right_answers; ?></h3>
+                    <h3><?= $friend_right_answers; ?></h3>
                 </div>
                 <p>Spot-On Guesses</p>
             </div>
@@ -128,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="stats wrong-answers">
                 <div class="icon-heading wrong_answers">
                     <i class="fa-solid fa-circle-xmark"></i>
-                    <h3><?= $wrong_answers; ?></h3>
+                    <h3><?= $friend_wrong_answers; ?></h3>
                 </div>
                 <p>Oopsie Moments</p>
             </div>
