@@ -20,7 +20,8 @@ if(empty($phrases)) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    Phrases::delete($connection, $_POST["delete_id"]);
+    $id = htmlspecialchars($_POST["delete_id"]);
+    Phrases::delete($connection, $id);
     header("Location: {$_SERVER['PHP_SELF']}");
     exit();
 }

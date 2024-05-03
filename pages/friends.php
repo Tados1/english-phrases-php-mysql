@@ -33,10 +33,10 @@ foreach($friends_id as $friend) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["friends-request"])) {
-        Url::redirectUrl("/english-phrases-php/pages/friends-request.php?id=$id_user");
+        Url::redirectUrl("/english-phrases-php/pages/friends-request.php");
     }
     elseif (isset($_POST["send-request"])) { 
-        $email = $_POST["email"];
+        $email = htmlspecialchars($_POST["email"]);
         $ignore_email = Users::getUserInfoById($connection, $id_user, "email");
 
         if(Users::emailsAvailability($connection, $email)) {

@@ -16,6 +16,11 @@ if (!Auth::isLoggedIn()) {
 
 $id_user = $_SESSION["logged_in_user_id"];
 
+// code to redirect to start.php when clicking on the decline on the guess-result.php page
+if(isset($_SESSION["friend_id"])) {
+    unset($_SESSION["friend_id"]);
+}
+
 $connection = Database::databaseConnection();
 
 

@@ -17,8 +17,8 @@ $english = null;
 $id_user = $_SESSION["logged_in_user_id"];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $slovak = $_POST["slovak"];
-    $english = $_POST["english"];
+    $slovak = htmlspecialchars($_POST["slovak"]);
+    $english = htmlspecialchars($_POST["english"]);
 
     $connection = Database::databaseConnection();
     
@@ -48,14 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <input  type="text" 
                 name="slovak" 
                 placeholder="Slovak" 
-                value="<?= htmlspecialchars($slovak)  ?>"
                 required
         >
 
         <input  type="text" 
                 name="english" 
                 placeholder="English"
-                value="<?= htmlspecialchars($english) ?>" 
                 required
         >
 

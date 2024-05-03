@@ -2,50 +2,15 @@
 
 require "classes/Database.php";
 require "classes/Users.php";
+require "classes/Page.php";
 
 session_start();
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'vendor/phpmailer/src/Exception.php';
-require 'vendor/phpmailer/src/PHPMailer.php';
-require 'vendor/phpmailer/src/SMTP.php';
-
-function send_reset_password($email, $token) {
-    $mail = new PHPMailer(true);
-    
-    try {
-        $mail->isSMTP();
-        $mail->Host = "smtp.gmail.com";
-        $mail->SMTPAuth = true;
-
-        $mail->CharSet = "UTF-8";
-        $mail->Encoding = "base64";
-
-        $mail->Username = "englishphrasesphp@gmail.com";
-        //password generation via myaccount.google.com/apppasswords
-        $mail->Password = "oerptedrpiyubaox";
-        $mail->SMTPSecure = "ssl";
-        $mail->Port = 465;
-    
-        $mail->setFrom("englishphrasesphp@gmail.com");
-        $mail->addAddress($email);
-        $mail->Subject = 'Here is your password reset link';
-
-        $email_template = "
-            <p>You are receiving this email because we received a password reset request for your account.</p>
-            <a href='http://localhost/english-phrases-php/new-password.php?token=$token'> Click here</a>
-        ";
-
-        $mail->Body = $email_template;
-        $mail->isHTML(true);
-    
-        $mail->send();  
-    } catch (Exception $e) {
-            echo "Message has not been sent: ", $mail->ErrorInfo;
-      }
-}
+//Page Name for send email
+$url = $_SERVER['REQUEST_URI'];
+$url_parts = parse_url($url);
+$path = $url_parts['path'];
+$page_name = basename($path);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $connection = Database::databaseConnection();
@@ -56,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $token = md5(rand());
        
         if(Users::updateToken($connection, $token, $email)) {        
-            send_reset_password($email, $token);
+            Page::send_email($email, $token, $page_name);
             $_SESSION["status"] = "Reset password link has been sent.";
         } else {
             $_SESSION["status"] = "Something went wrong.";

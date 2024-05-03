@@ -22,13 +22,14 @@ class Phrases {
     }
 
     
-    public static function getOnePhrase($connection, $id) {
+    public static function getOnePhrase($connection, $id_phrase, $id_user) {
         $sql = "SELECT *
                 FROM phrases
-                WHERE id_phrase = :id_phrase";
+                WHERE id_phrase = :id_phrase AND id_user = :id_user";
         
         $stmt = $connection->prepare($sql);
-        $stmt->bindValue(":id_phrase", $id, PDO::PARAM_INT);
+        $stmt->bindValue(":id_phrase", $id_phrase, PDO::PARAM_INT);
+        $stmt->bindValue(":id_user", $id_user, PDO::PARAM_INT);
 
         try {
             if($stmt->execute()) {

@@ -15,8 +15,20 @@ if (!Auth::isLoggedIn() ) {
 
 $id_user = $_SESSION["logged_in_user_id"];
 $friend_id = isset($_GET["id"]) ? $_GET["id"] : null;
+$_SESSION["friend_id"] = $friend_id;
 
 $connection = Database::databaseConnection();
+
+$friends_list_id = Friendship::getFriends($connection, $id_user);
+$found = false;
+
+foreach($friends_list_id as $friend) {
+    if($friend["friend_id"] == $friend_id) {
+        $found = true;
+    }
+}
+
+
 $user_name = Users::getUserInfoById($connection, $friend_id, "name");
 $friend_phrases_counter = Users::getUserInfoById($connection, $friend_id, "phrases_counter");
 $friend_right_answers = Users::getUserInfoById($connection, $friend_id, "right_answers");
@@ -46,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["correct_to_10"] = 0;
         $_SESSION["incorrect_to_10"] = 0;
 
-        Url::redirectUrl("/english-phrases-php/pages/friend-phrases.php?id=$friend_id");
+        Url::redirectUrl("/english-phrases-php/pages/friend-phrases.php");
     } elseif (isset($_POST["play-with-friend"])) {
         //for scoring up to 10
         $_SESSION["counter_to_10"] = 0;
@@ -55,11 +67,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if(!$check_exist) {
             Duels::createDuel($connection, $friend_id, $id_user, $id_user);
-            Url::redirectUrl("/english-phrases-php/pages/friends-duel.php?id=$friend_id");
+            Url::redirectUrl("/english-phrases-php/pages/friends-duel.php");
         } 
 
         if(!$second_player_check["second_player_check"]) {
-            Url::redirectUrl("/english-phrases-php/pages/friends-duel.php?id=$friend_id");
+            Url::redirectUrl("/english-phrases-php/pages/friends-duel.php");
         }
         
     } elseif (isset($_POST["delete-friend"])) {
@@ -71,10 +83,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } elseif (isset($_POST["result"])) {
         if ($first_player_check["first_player_check"] === $id_user) {
             Duels::updateDuel($connection, "first_player_check", 1, $id_user, $friend_id);
-            Url::redirectUrl("/english-phrases-php/pages/friends-duel-result.php?id=$friend_id");
+            Url::redirectUrl("/english-phrases-php/pages/friends-duel-result.php");
         } elseif($second_player_check["second_player_check"] === $id_user) { 
             Duels::updateDuel($connection, "second_player_check", 1, $id_user, $friend_id);
-            Url::redirectUrl("/english-phrases-php/pages/friends-duel-result.php?id=$friend_id");
+            Url::redirectUrl("/english-phrases-php/pages/friends-duel-result.php");
         }
         Url::redirectUrl("/english-phrases-php/pages/friends.php");
     }
@@ -94,7 +106,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <?php require "../assets/header.php"; ?>
 
-    <section class="friend-statistics-container">
+    <?php if($found): ?>
+        <section class="friend-statistics-container">
         <h1>Insight into the progress of <?= $user_name; ?></h1>
 
         <section class="friend-statistics">
@@ -173,8 +186,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <p>Ready to say goodbye to <?= $user_name; ?>? Hit Unfriend to make it official!</p>
             <button type="submit" name="delete-friend">Unfriend</button>
         </form>
-    </section>
-        
-    
+        </section>
+    <?php else: ?>
+        <h1>ERROR</h1>
+    <?php endif; ?>
 </body>
 </html>

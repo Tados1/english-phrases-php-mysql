@@ -104,14 +104,16 @@ class Users {
 
         $stmt = $connection->prepare($sql);
 
-        $stmt->bindValue(":id", $id, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 
         try {
             if ($stmt->execute()) {
-                if ($stmt->execute()) {
-                    $result = $stmt->fetch();
+                $result = $stmt->fetch();
+                if($result !== false) {
                     $user_info = $result[0];
                     return $user_info;
+                } else {
+                    throw new Exception("No data found for user with ID: $id");
                 }
             } else {
                 throw new Exception("Error getting user $info");

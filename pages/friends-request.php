@@ -29,11 +29,11 @@ foreach($requests as $request) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["accept"])) {
-        $friend_id = $_POST["friend_id"];
+        $friend_id = htmlspecialchars($_POST["friend_id"]);
         Friendship::acceptRequest($connection, $friend_id, $id_user);
         Url::redirectUrl("/english-phrases-php/pages/friends-request.php");
     } elseif (isset($_POST["decline"])) {
-        $friend_id = $_POST["friend_id"];
+        $friend_id = htmlspecialchars($_POST["friend_id"]);
         Friendship::declineRequest($connection, $friend_id, $id_user);
         Url::redirectUrl("/english-phrases-php/pages/friends-request.php");
     }

@@ -15,7 +15,7 @@ if (!Auth::isLoggedIn() ) {
 }
 
 $id_user = $_SESSION["logged_in_user_id"];
-$friend_id = isset($_GET["id"]) ? $_GET["id"] : null;
+$friend_id = $_SESSION["friend_id"];
 
 $connection = Database::databaseConnection();
 
@@ -53,7 +53,7 @@ $feedback_message = "";
 $class = "phrase";
 
 if($_SESSION["counter_to_10"] === 10) {
-    Url::redirectUrl("/english-phrases-php/pages/guess-result.php?id=$friend_id");
+    Url::redirectUrl("/english-phrases-php/pages/guess-result.php");
 }
 elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
     $counter_all_answers++;

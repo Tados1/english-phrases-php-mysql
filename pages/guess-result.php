@@ -11,14 +11,16 @@ if (!Auth::isLoggedIn() ) {
     die("Unauthorized access");
 }
 
-$friend_id = isset($_GET["id"]) ? $_GET["id"] : null;
+if(isset($_SESSION["friend_id"])) {
+    $friend_id = $_SESSION["friend_id"];
+}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $_SESSION["counter_to_10"] = 0;
     $_SESSION["correct_to_10"] = 0;
     $_SESSION["incorrect_to_10"] = 0;
-    if($friend_id) {
-        Url::redirectUrl("/english-phrases-php/pages/friend-phrases.php?id=$friend_id");
+    if(isset($friend_id)) {
+        Url::redirectUrl("/english-phrases-php/pages/friend-phrases.php");
     } else {
         Url::redirectUrl("/english-phrases-php/pages/guess-phrase.php");
     }
@@ -45,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <span class="lable">Play Again</span>
             </button>
 
-            <?php if($friend_id): ?>
+            <?php if(isset($friend_id)): ?>
                 <a href="specific-friend.php?id=<?=$friend_id; ?>">Decline</a>
             <?php else: ?>
                 <a href="start.php">Decline</a>

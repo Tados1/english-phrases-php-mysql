@@ -13,10 +13,12 @@ if (!Auth::isLoggedIn() ) {
     die("Unauthorized access");
 }
 
+$id_user = $_SESSION["logged_in_user_id"];
+
 $connection = Database::databaseConnection();
 
-if ( isset($_GET["id"]) ){
-    $phrase = Phrases::getOnePhrase($connection, $_GET["id"]);
+if (isset($_GET["id"]) ){
+    $phrase = Phrases::getOnePhrase($connection, $_GET["id"], $id_user);
 
     if ($phrase) {
         $slovak = $phrase["slovak"];
@@ -31,10 +33,9 @@ if ( isset($_GET["id"]) ){
     die("ID not entered, phrase not found");
 }
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $slovak = $_POST["slovak"];
-    $english = $_POST["english"];
+    $slovak = htmlspecialchars($_POST["slovak"]);
+    $english = htmlspecialchars($_POST["english"]);
 
     if(Phrases::edit($connection, $slovak, $english, $id)) {
         Url::redirectUrl("/english-phrases-php/pages/phrases.php");
@@ -63,14 +64,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input  type="text" 
                 name="slovak" 
                 placeholder="Slovak" 
-                value="<?= htmlspecialchars($slovak)  ?>"
+                value="<?= $slovak ?>"
                 required
         >
 
         <input  type="text" 
                 name="english" 
                 placeholder="English"
-                value="<?= htmlspecialchars($english) ?>" 
+                value="<?= $english ?>" 
                 required
         >
 
