@@ -44,7 +44,7 @@ class Phrases {
     }
 
     public static function getRandomPhrase($connection, $id_user) {
-        $sql = "SELECT * FROM phrases WHERE id_user = :id_user ORDER BY RAND() LIMIT 1";
+        $sql = "SELECT * FROM phrases WHERE id_user = :id_user AND status = 'show' ORDER BY RAND() LIMIT 1";
         
         $stmt = $connection->prepare($sql);
         $stmt->bindValue(":id_user", $id_user, PDO::PARAM_INT);
@@ -62,7 +62,7 @@ class Phrases {
     }
 
     public static function getRandomFriendsPhrase($connection, $id_user, $friend_id) {
-        $sql = "SELECT * FROM phrases WHERE id_user = :id_user OR id_user = :friend_id ORDER BY RAND() LIMIT 1";
+        $sql = "SELECT * FROM phrases WHERE (id_user = :id_user OR id_user = :friend_id) AND status = 'show' ORDER BY RAND() LIMIT 1";
         
         $stmt = $connection->prepare($sql);
         $stmt->bindValue(":id_user", $id_user, PDO::PARAM_INT);
@@ -119,7 +119,7 @@ class Phrases {
             if($stmt->execute()) {
                 return true;
             } else {
-                throw new Exception("Edit employee phrase"); 
+                throw new Exception("Edit phrase"); 
             }
         } catch (Exception $e) {
             error_log("Error with function edit\n", 3, "../errors/error.log");
@@ -165,6 +165,27 @@ class Phrases {
             }
         } catch (Exception $e) {
             error_log("Error with function deleteAllPhrases\n", 3, "../errors/error.log");
+            echo "Error Type: " . $e->getMessage();
+        }
+    }
+
+    public static function showToggle($connection, $id, $value) {
+        $sql = "UPDATE phrases
+                    SET status = :value
+                    WHERE id_phrase = :id";
+        
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(":value", $value, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+        try {
+            if($stmt->execute()) {
+                return true;
+            } else {
+                throw new Exception("Ignore phrase"); 
+            }
+        } catch (Exception $e) {
+            error_log("Error with function ignore\n", 3, "../errors/error.log");
             echo "Error Type: " . $e->getMessage();
         }
     }
