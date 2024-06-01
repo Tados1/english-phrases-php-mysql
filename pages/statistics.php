@@ -5,6 +5,7 @@ require "../classes/Users.php";
 require "../classes/Auth.php";
 require "../classes/Friendship.php";
 require "../classes/Duels.php";
+require "../classes/Phrases.php";
 
 session_start();
 
@@ -19,9 +20,10 @@ $user_name = Users::getUserInfoById($connection, $id_user, "name");
 $phrases_counter = Users::getUserInfoById($connection, $id_user, "phrases_counter");
 $right_answers = Users::getUserInfoById($connection, $id_user, "right_answers");
 $wrong_answers = Users::getUserInfoById($connection, $id_user, "wrong_answers");
+$my_phrases_counter = Phrases::countingPhrases($connection, $id_user);
+$hidden_phrases_counter = Phrases::countingHiddenPhrases($connection, $id_user);
 
 $message = "Play and see where you stand!";
-
 
 if($right_answers) {
     $accuracy_percentage = round(($right_answers / $phrases_counter) * 100);
@@ -100,6 +102,18 @@ if($right_answers) {
             <div class="message">
                 <h3><?= $message; ?></h3>
             </div>
+    </section>
+
+    <section class="phrases-counter">
+        <div class="one-counter all-phrases">
+            <h3> <span><?= $my_phrases_counter[0] ?></span> Phrases in Total</h3>
+            <i class="fa-solid fa-pen"></i>
+        </div>
+
+        <div class="one-counter hidden-phrases">
+            <h3> <span><?= $hidden_phrases_counter[0] ?></span> Hidden Phrases</h3>
+            <i class="fa-solid fa-eye-slash"></i>
+        </div>
     </section>
 
     

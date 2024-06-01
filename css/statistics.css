@@ -73,6 +73,54 @@ body {
     color: white;
 }
 
+.one-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 500px;
+    height: 115px;
+    text-align: center;
+    color: white;
+    border: 3px solid #37464F;
+    border-bottom: 7px solid #37464F;
+    border-radius: 20px;
+    margin: 30px auto;
+}
+
+.one-counter i {
+    font-size: 50px;
+}
+
+.one-counter h3 {
+    font-size: 30px;
+    color: rgb(185, 185, 185);
+}
+
+.one-counter span {
+    color: #2b70c9;
+}
+
+.all-phrases h3::after {
+    content: '';
+    display: block;
+    border-bottom: 3px solid #2b70c9;
+    border-radius: 50%;
+}
+
+.all-phrases i {
+    color: #2b70c9;
+    margin-bottom: 20px;
+}
+
+.hidden-phrases span {
+    color: #ff4b4b;
+}
+
+.hidden-phrases i {
+    color: #ff4b4b;
+}
+
 
 /* ---------------------- CSS media queries ------------------- */
 
@@ -132,6 +180,19 @@ body {
 
     .message h3 {
         font-size: 35px;
+    }
+
+    .one-counter {
+        width: 300px;
+        height: 80px;
+    }
+    
+    .one-counter i {
+        font-size: 25px;
+    }
+    
+    .one-counter h3 {
+        font-size: 17px;
     }
 }
 

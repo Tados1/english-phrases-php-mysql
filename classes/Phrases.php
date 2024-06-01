@@ -189,4 +189,44 @@ class Phrases {
             echo "Error Type: " . $e->getMessage();
         }
     }
+
+    public static function countingPhrases($connection, $id) {
+        $sql = "SELECT COUNT(*) 
+                    FROM phrases
+                    WHERE id_user = :id";
+
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+        try {
+            if($stmt->execute()) {
+                return $stmt->fetch();
+            } else {
+                throw new Exception("Fail to count phrases"); 
+            }
+        } catch (Exception $e) {
+            error_log("Error with function countingPhrases\n", 3, "../errors/error.log");
+            echo "Error Type: " . $e->getMessage();
+        }
+    }
+
+    public static function countingHiddenPhrases($connection, $id) {
+        $sql = "SELECT COUNT(*) 
+                    FROM phrases
+                    WHERE id_user = :id AND status = 'hide'";
+
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+
+        try {
+            if($stmt->execute()) {
+                return $stmt->fetch();
+            } else {
+                throw new Exception("Fail to count hidden phrases"); 
+            }
+        } catch (Exception $e) {
+            error_log("Error with function countingHiddenPhrases\n", 3, "../errors/error.log");
+            echo "Error Type: " . $e->getMessage();
+        }
+    }
 }
