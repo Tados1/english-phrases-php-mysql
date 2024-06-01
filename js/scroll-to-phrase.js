@@ -1,8 +1,8 @@
 window.onload = function() {
-    var params = new URLSearchParams(window.location.search);
+    let params = new URLSearchParams(window.location.search);
     if (params.has('scroll')) {
-        var elementId = params.get('scroll');
-        var element = document.getElementById(elementId);
+        let elementId = params.get('scroll');
+        let element = document.getElementById(elementId);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }

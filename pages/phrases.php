@@ -118,7 +118,12 @@ foreach ($phrases as $phrase) {
         <?php endif; ?>
     </div>
 
+    <div class="scroll-to-top">
+        <i class="fa-regular fa-circle-up"></i>
+    </div>
+
     <script src="../js/filter.js"></script>
     <script src="../js/scroll-to-phrase.js"></script>
+    <script src="../js/scroll-to-top.js"></script>
 </body>
 </html>

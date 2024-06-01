@@ -150,6 +150,22 @@ body {
     font-weight: 800;
 }
 
+.scroll-to-top {
+    position: fixed;
+    display: none;
+    transform: translate(-50%, -50%);
+    top: 90%;
+    left: 50%;
+    color: #e5e5e573;
+    font-size: 70px;
+    cursor: pointer;
+    transition: all linear .3s;
+}
+
+.scroll-to-top:hover,
+.scroll-to-top:active {
+    color: #e5e5e5d2;
+}
 
 
 /* ---------------------- CSS media queries ------------------- */
@@ -157,7 +173,11 @@ body {
 @media only screen and (max-width: 1300px) {
     .all-phrases-container {
         width: 1000px;
-    }    
+    }   
+    
+    .scroll-to-top {
+        font-size: 50px;
+    }
 }
 
 @media only screen and (max-width: 1050px) {
@@ -220,4 +240,7 @@ body {
         font-size: 20px;
     }
 
+    .scroll-to-top {
+        font-size: 40px;
+    }
 }
