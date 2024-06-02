@@ -33,6 +33,8 @@ $user_name = Users::getUserInfoById($connection, $friend_id, "name");
 $friend_phrases_counter = Users::getUserInfoById($connection, $friend_id, "phrases_counter");
 $friend_right_answers = Users::getUserInfoById($connection, $friend_id, "right_answers");
 $friend_wrong_answers = Users::getUserInfoById($connection, $friend_id, "wrong_answers");
+$my_phrases_counter = Phrases::countingPhrases($connection, $friend_id);
+$hidden_phrases_counter = Phrases::countingHiddenPhrases($connection, $friend_id);
 
 if($friend_right_answers) {
     $accuracy_percentage = round(($friend_right_answers / $friend_phrases_counter) * 100);
@@ -142,6 +144,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
                 <p>Accuracy Percentage</p>
             </div>  
+        </section>
+
+        <section class="phrases-counter">
+            <div class="one-counter all-phrases">
+                <h3> <span><?= $my_phrases_counter[0] ?></span> Phrases in Total</h3>
+                <i class="fa-solid fa-pen"></i>
+            </div>
+
+            <div class="one-counter hidden-phrases">
+                <h3> <span><?= $hidden_phrases_counter[0] ?></span> Hidden Phrases</h3>
+                <i class="fa-solid fa-eye-slash"></i>
+            </div>
         </section>
 
         <form method="POST" class="play-friend-phrases">
