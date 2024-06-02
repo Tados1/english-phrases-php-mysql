@@ -4,7 +4,13 @@ window.onload = function() {
         let elementId = params.get('scroll');
         let element = document.getElementById(elementId);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            let headerHeight = document.querySelector('header').offsetHeight;
+            let elementPosition = element.getBoundingClientRect().top;
+            let offsetPosition = elementPosition - headerHeight;
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
     }
 }

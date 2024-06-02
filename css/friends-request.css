@@ -16,6 +16,10 @@ body {
     padding: 20px;
 }
 
+.friends-request:first-of-type {
+    margin-top: 150px;
+}
+
 .friends-request p {
     width: 80%;
     color: white;
@@ -116,5 +120,9 @@ body {
     
     .no-friends-requests p {
         font-size: 20px;
+    }
+
+    .friends-request:first-of-type {
+        margin-top: 120px;
     }
 }

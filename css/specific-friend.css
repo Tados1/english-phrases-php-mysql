@@ -6,7 +6,7 @@ body {
 .friend-statistics-container h1 {
     font-size: 30px;
     color: white;
-    margin: 50px;
+    margin: 120px auto 50px auto;
     text-align: center;
 }
 
@@ -248,7 +248,6 @@ body {
 
 @media only screen and (max-width: 700px) {
     .friend-statistics-container h1 {
-        margin: 30px auto;
         font-size: 20px;
     }
 

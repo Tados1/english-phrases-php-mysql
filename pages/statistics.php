@@ -115,7 +115,5 @@ if($right_answers) {
             <i class="fa-solid fa-eye-slash"></i>
         </div>
     </section>
-
-    
 </body>
 </html>
