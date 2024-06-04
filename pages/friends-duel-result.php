@@ -5,11 +5,13 @@ require "../classes/Friendship.php";
 require "../classes/Duels.php";
 require "../classes/Users.php";
 require "../classes/Database.php";
+require "../classes/Url.php";
 
 session_start();
 
 if (!Auth::isLoggedIn() ) {
-    die("Unauthorized access");
+    Url::redirectUrl("/english-phrases-php/index.php");
+    die();
 }
 
 $id_user = $_SESSION["logged_in_user_id"];

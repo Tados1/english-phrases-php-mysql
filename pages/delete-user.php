@@ -10,7 +10,8 @@ require "../classes/Duels.php";
 session_start();
 
 if (!Auth::isLoggedIn() ) {
-    die("Unauthorized access");
+    Url::redirectUrl("/english-phrases-php/index.php");
+    die();
 }
 
 $id_user = $_SESSION["logged_in_user_id"];

@@ -8,7 +8,8 @@ require "../classes/Duels.php";
 session_start();
 
 if (!Auth::isLoggedIn() ) {
-    die("Unauthorized access");
+    Url::redirectUrl("/english-phrases-php/index.php");
+    die();
 }
 
 if(isset($_SESSION["friend_id"])) {
