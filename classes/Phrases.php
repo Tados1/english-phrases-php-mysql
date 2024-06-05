@@ -4,7 +4,8 @@ class Phrases {
 
     public static function get($connection, $id_user) {
         $sql = "SELECT * FROM phrases 
-                WHERE id_user = :id_user";
+                WHERE id_user = :id_user
+                ORDER BY id_phrase DESC";
     
         $stmt = $connection->prepare($sql);
         $stmt->bindValue(":id_user", $id_user, PDO::PARAM_INT);

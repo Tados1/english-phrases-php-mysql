@@ -6,11 +6,13 @@ const allPhrasesDiv = document.querySelector(".all-phrases");
 const phrasesObjects = allOnePhraseArray.map((onePhrase, index) => {
     const slovakContent = onePhrase.querySelector('.phrases p:nth-of-type(1)').textContent;
     const englishContent = onePhrase.querySelector('.phrases p:nth-of-type(2)').textContent;
+    const isHidden = onePhrase.classList.contains('hide');
     return {
         id: index,
         phraseHTML: onePhrase.innerHTML,
         slovakPhrase: slovakContent,
-        englishPhrase: englishContent
+        englishPhrase: englishContent,
+        isHidden: isHidden
     };
 });
 
@@ -23,9 +25,13 @@ input.addEventListener("input", () => {
 
     allPhrasesDiv.innerHTML = "";
 
-    filteredPhrases.map((onePhrase) => {
+    filteredPhrases.forEach((onePhrase) => {
         const newDiv = document.createElement("div");
         newDiv.classList.add("one-phrase");
+
+        if(onePhrase.isHidden) {
+            newDiv.classList.add("hide");
+        }
 
         newDiv.innerHTML = onePhrase.phraseHTML;
 
